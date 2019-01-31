@@ -130,7 +130,7 @@ public class Picture extends SimplePicture
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
-  public void mirrorVertical()
+  public void mirrorVert()
   {
     Pixel[][] pixels = this.getPixels2D();
     Pixel leftPixel = null;
@@ -248,8 +248,8 @@ public class Picture extends SimplePicture
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("seagull.jpg");
-    Picture flower2 = new Picture("seagull.jpg");
+    Picture flower1 = new Picture("sully.jpg");
+    Picture flower2 = new Picture("baby grinch.jpeg");
     this.copy(flower1,0,0);
     this.copy(flower2,100,0);
     this.copy(flower1,200,0);
@@ -258,8 +258,21 @@ public class Picture extends SimplePicture
     this.copy(flowerNoBlue,300,0);
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
-    this.mirrorVertical();
-    this.write("seagull.jpg");
+
+  }
+  public void coolBoyz()
+  {
+    Picture zully = new Picture("sully.jpg");
+    Picture baby = new Picture("baby grinch.jpeg");
+    Picture zebra = new Picture("zebra.jpg");
+    this.copy(zully,0,0);
+    this.copy(baby,100,0);
+    this.copy(zully,200,0);
+   this.copy(zebra,300,0);
+   
+    this.copy(zully,400,0);
+    this.copy(baby,500,0);
+
   }
   public void glitch()
   {
@@ -336,6 +349,31 @@ public class Picture extends SimplePicture
       }
     }
   }
+  
+  public void xd(int edgeDist)
+  {
+	    Pixel leftPixel = null;
+	    Pixel rightPixel = null;
+	    Pixel[][] pixels = this.getPixels2D();
+	    Color rightColor = null;
+	    for (int row = 0; row < pixels.length; row++)
+	    {
+	      for (int col = 0; 
+	           col < pixels[0].length-1; col++)
+	      {
+	        leftPixel = pixels[row][col];
+	        rightPixel = pixels[row][col+1];
+	        rightColor = rightPixel.getColor();
+	        if (leftPixel.colorDistance(rightColor) > 
+	            edgeDist)
+	          leftPixel.setColor(Color.YELLOW);
+	        else
+	          leftPixel.setColor(Color.BLUE);
+	      }
+	    }
+	  }
+	  
+  
   public void hidePicture(Picture hidden)
   {
       Pixel[][] pixels = this.getPixels2D();
@@ -386,10 +424,19 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("seagull.jpg");
+    Picture beach = new Picture("sully.jpg");
+   
     beach.explore();
-    beach.zeroBlue();
+    beach.coolBoyz();
     beach.explore();
+    beach.explore();
+    beach.xd(0);
+    beach.explore();
+    beach.glitch();
+    beach.explore();
+    beach.mirrorVert();
+    beach.explore();
+    
   }
   
 } // this } is the end of class Picture, put all new methods before this

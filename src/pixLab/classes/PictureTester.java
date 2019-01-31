@@ -33,7 +33,7 @@ public class PictureTester
   
   
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("sully.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
@@ -49,7 +49,7 @@ public class PictureTester
   }
   public static void testMirrorHorizontal()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("sully.jpg");
     caterpillar.explore();
     caterpillar.mirrorHorizontal();
     caterpillar.explore();
@@ -81,54 +81,8 @@ public class PictureTester
   }
   public static void glitch()
   {
-	  
-	  Picture sully = new Picture("sully.jpg"); 
-	  //int imageHeight = pixels.length;
-	  Random rand = new Random();
-	  
-	  int mirrorPoint = 0;
-	  int mirrorPoint2 = 0;
-	  int mirrorPlace = 0;
-	  int mirrorPlace2 = 0;
-	  
-	  for (int x = 0; x < 5; x++)
-	  {
-		  
-	
-	  mirrorPoint = rand.nextInt(99) + 1;
-	  mirrorPoint2 = rand.nextInt(99) + 1;
-	  mirrorPlace = rand.nextInt(99) + 1;
-	  mirrorPlace2 = rand.nextInt(99) + 1;
-	  
-	  
-	  Pixel leftPixel = null;
-	  Pixel rightPixel = null;
-	  int count = 0;
-	  Pixel[][] pixels = this.getPixels2D();
-	  
-	  for (int row = mirrorPlace; row < 100; row++)
-	  {
-		  for (int col = mirrorPlace2; col < mirrorPoint; col++)
-		  {
-			  leftPixel = pixels[row][col];
-			  rightPixel = pixels[row]
-					  			[mirrorPoint - col + mirrorPoint];
-			  rightPixel.setColor(leftPixel.getColor());
-		  }
-	  }
-	  for (int row = 100; row < 100; row++)
-	  {
-		  for (int col = 100; col < mirrorPoint; col++)
-		  {
-			  leftPixel = pixels[row][col];
-			  rightPixel = pixels[row]
-					  			[mirrorPoint2 - col + mirrorPoint2];
-			  rightPixel.setColor(leftPixel.getColor());
-		  }
-		  }
-	  }
+	  sully.glitch();
   }
-  
   public static void randomColor()
   {
 	  Color random;
